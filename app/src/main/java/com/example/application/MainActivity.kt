@@ -47,15 +47,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginViewModel) {
-    var username by remember { mutableStateOf("test@test.uzv.cat") }
-    var password by remember { mutableStateOf("Jsp326TjR") }
+    var username by remember { mutableStateOf("test@test.usv.cat") }
+    var password by remember { mutableStateOf("Jsp326TjB") }
     val loginResult by viewModel.loginResult.collectAsState()
     val context = LocalContext.current
 
     LaunchedEffect(loginResult) {
         loginResult?.let {
             if (it.isSuccessful) {
-                Toast.makeText(context, "Login successful: ${it.body()?.token}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Login successful: ${it.body()?.access}", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Login failed: ${it.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
             }
