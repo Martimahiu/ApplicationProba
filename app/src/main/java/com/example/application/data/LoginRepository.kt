@@ -20,7 +20,7 @@ class LoginRepository {
      */
     suspend fun login(
         serverToken: String,
-        loginRequest: LoginRequest
+        loginRequest: String
     ): Response<LoginResponse> {
         // Llama a la función de la API pasándole los dos argumentos que recibe
         return ApiClient.apiService.getToken(serverToken, loginRequest)

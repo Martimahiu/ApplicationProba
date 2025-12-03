@@ -2,12 +2,14 @@
 
 package com.example.application.ui.login
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.application.data.model.LoginRequest
 import com.example.application.data.model.LoginResponse
 import com.example.application.data.model.StatusResponse
 import com.example.application.data.network.ApiClient
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,11 +34,13 @@ class LoginViewModel : ViewModel() {
                 // Preparamos los dos argumentos que necesita la API
                 val serverTokenValue = "server_token_lasm_2025"
                 val loginRequestBody = LoginRequest(username, password)
+                val loginString = Gson().toJson(loginRequestBody)
+                Log.d("Login credentials parameters", loginString )
 
                 // Llamamos a la función de la API pasándole los dos argumentos
                 val response = ApiClient.apiService.getToken(
                     serverToken = serverTokenValue,
-                    loginRequest = loginRequestBody
+                    loginRequest = loginString
                 )
 
                 _loginResult.value = response

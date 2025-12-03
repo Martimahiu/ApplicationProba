@@ -3,6 +3,6 @@ package com.example.application.data.model
 import com.squareup.moshi.Json
 
 data class LoginRequest(
-    @Json(name = "username") val username: String,
-    @Json(name = "password") val password: String
+    val username: String,
+    val password: String
 )

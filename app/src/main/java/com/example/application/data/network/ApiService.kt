@@ -20,7 +20,7 @@ interface ApiService {
     @POST("endpoints/v2/token/")
     suspend fun getToken(
         @Header("server-token") serverToken: String, // Parámetro 1: La cabecera
-        @Body loginRequest: LoginRequest             // Parámetro 2: El cuerpo
+        @Body loginRequest: String             // Parámetro 2: El cuerpo
     ): Response<LoginResponse>
 
     /**
